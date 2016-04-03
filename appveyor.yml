@@ -11,7 +11,7 @@ environment:
   - TARGET: nightly-i686-pc-windows-msvc
     ARCH: 32
 install:
-  - cmd: @echo Current directory is
+  - cmd: echo Current directory is
   - cmd: cd
   - cmd: mkdir ..\deps
   - cmd: curl -o "..\deps\sciter%ARCH%.dll" "https://raw.githubusercontent.com/c-smile/sciter-sdk/master/bin/sciter%ARCH%.dll"
@@ -21,11 +21,11 @@ install:
   - cmd: set PATH=%PATH%;C:\rust\bin
 build_script:
   - cargo clean
-  - cmd: @echo Building library
+  - cmd: echo Building library
   - cmd: mkdir target\release\deps
   - cmd: copy ..\deps\sciter%ARCH%.lib target\release\deps
   - cargo build --release
-  - cmd: @echo Building examples
+  - cmd: echo Building examples
   - cmd: mkdir examples\target\release\deps
   - cmd: copy ..\deps\sciter%ARCH%.lib examples\target\release\deps
   - cmd: cd examples
