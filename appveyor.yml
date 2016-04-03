@@ -1,7 +1,7 @@
 version: 0.4.0.{build}
 branches:
   only:
-  - appveyor
+    - appveyor
 init:
   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 environment:
@@ -10,8 +10,6 @@ environment:
     ARCH: 64
   - TARGET: nightly-i686-pc-windows-msvc
     ARCH: 32
-  - CONFIG: 
-  - CONFIG: --release
 install:
   - cmd: mkdir ..\deps
   - cmd: curl -o "..\deps\sciter%ARCH%.dll" "https://raw.githubusercontent.com/c-smile/sciter-sdk/master/bin/sciter%ARCH%.dll"
@@ -21,12 +19,14 @@ install:
   - cmd: set PATH=%PATH%;C:\rust\bin
 build_script:
   - cargo clean
-  - cmd: mkdir target\debug\deps
   - cmd: mkdir target\release\deps
-  - cmd: copy ..\deps\sciter%ARCH%.lib target\debug\deps
   - cmd: copy ..\deps\sciter%ARCH%.lib target\release\deps
-  - cargo build
+  - cmd: mkdir examples\target\release\deps
+  - cmd: copy ..\deps\sciter%ARCH%.lib examples\target\release\deps
+  - cargo build --release
+  - cmd: cd examples
+  - cargo build --release
 test_script:
-  - cargo test %CONFIG%
+  - cargo test --release
 on_finish:
   - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
