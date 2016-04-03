@@ -20,6 +20,7 @@ install:
   - cmd: ..\deps\rust-install.exe /VERYSILENT /NORESTART /DIR="C:\rust"
   - cmd: set PATH=%PATH%;C:\rust\bin;C:\projects\deps
 build_script:
+  - cmd: cd
   - cargo clean
   - cmd: echo Building library
   - cmd: mkdir target\release\deps
@@ -32,4 +33,5 @@ build_script:
   - cargo build --release
   - cmd: cd ..
 test_script:
+  - cmd: cd
   - cargo test --release
