@@ -11,11 +11,12 @@ environment:
   - TARGET: nightly-i686-pc-windows-msvc
     ARCH: 32
 install:
+  - cmd: echo Current directory: %CD%
   - cmd: mkdir ..\deps
   - cmd: curl -o "..\deps\sciter%ARCH%.dll" "https://raw.githubusercontent.com/c-smile/sciter-sdk/master/bin/sciter%ARCH%.dll"
   - cmd: curl -o "..\deps\sciter%ARCH%.lib" "https://raw.githubusercontent.com/c-smile/sciter-sdk/master/lib/sciter%ARCH%.lib"
   - cmd: curl -o "..\deps\rust-install.exe" "https://static.rust-lang.org/dist/rust-%TARGET%.exe"
-  - cmd: .\rust-install.exe /VERYSILENT /NORESTART /DIR="C:\rust"
+  - cmd: ..\deps\rust-install.exe /VERYSILENT /NORESTART /DIR="C:\rust"
   - cmd: set PATH=%PATH%;C:\rust\bin
 build_script:
   - cargo clean
@@ -28,5 +29,3 @@ build_script:
   - cargo build --release
 test_script:
   - cargo test --release
-on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
