@@ -11,7 +11,8 @@ environment:
   - TARGET: nightly-i686-pc-windows-msvc
     ARCH: 32
 install:
-  - cmd: echo Current directory: %CD%
+  - cmd: echo Current directory
+  - cmd: cd
   - cmd: mkdir ..\deps
   - cmd: curl -o "..\deps\sciter%ARCH%.dll" "https://raw.githubusercontent.com/c-smile/sciter-sdk/master/bin/sciter%ARCH%.dll"
   - cmd: curl -o "..\deps\sciter%ARCH%.lib" "https://raw.githubusercontent.com/c-smile/sciter-sdk/master/lib/sciter%ARCH%.lib"
