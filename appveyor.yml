@@ -6,14 +6,6 @@ init:
   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 environment:
   matrix:
-  - TARGET: nightly-x86_64-pc-windows-msvc
-    ARCH: 64
-  - TARGET: nightly-i686-pc-windows-msvc
-    ARCH: 32
-  - TARGET: nightly-x86_64-pc-windows-gnu
-    ARCH: 64
-  - TARGET: nightly-i686-pc-windows-gnu
-    ARCH: 32
   - TARGET: rust-1.7.0-x86_64-pc-windows-msvc
     ARCH: 64
   - TARGET: rust-1.7.0-i686-pc-windows-msvc
@@ -21,6 +13,14 @@ environment:
   - TARGET: rust-1.7.0-x86_64-pc-windows-gnu
     ARCH: 64
   - TARGET: rust-1.7.0-i686-pc-windows-gnu
+    ARCH: 32
+  - TARGET: nightly-x86_64-pc-windows-msvc
+    ARCH: 64
+  - TARGET: nightly-i686-pc-windows-msvc
+    ARCH: 32
+  - TARGET: nightly-x86_64-pc-windows-gnu
+    ARCH: 64
+  - TARGET: nightly-i686-pc-windows-gnu
     ARCH: 32
 install:
   - cmd: echo Testing sciter%ARCH% %CONFIGURATION% with %TARGET% under %PLATFORM%.
