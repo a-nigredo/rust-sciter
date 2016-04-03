@@ -15,7 +15,7 @@ install:
   - cmd: curl -o "..\deps\sciter%ARCH%.dll" "https://raw.githubusercontent.com/c-smile/sciter-sdk/master/bin/sciter%ARCH%.dll"
   - cmd: curl -o "..\deps\sciter%ARCH%.lib" "https://raw.githubusercontent.com/c-smile/sciter-sdk/master/lib/sciter%ARCH%.lib"
   - cmd: curl -o "..\deps\rust-install.exe" "https://static.rust-lang.org/dist/rust-%TARGET%.exe"
-  - cmd: .\rust-install.exe /VERYSILENT /NORESTART /DIR="C:\rust" | Out-Null 
+  - cmd: .\rust-install.exe /VERYSILENT /NORESTART /DIR="C:\rust"
   - cmd: set PATH=%PATH%;C:\rust\bin
 build_script:
   - cargo clean
