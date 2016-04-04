@@ -8,24 +8,13 @@ environment:
   matrix:
   - TARGET: 1.7.0-x86_64-pc-windows-msvc
     ARCH: 64
-  - TARGET: 1.7.0-i686-pc-windows-msvc
-    ARCH: 32
-  - TARGET: 1.7.0-x86_64-pc-windows-gnu
-    ARCH: 64
-  - TARGET: 1.7.0-i686-pc-windows-gnu
-    ARCH: 32
   - TARGET: nightly-x86_64-pc-windows-msvc
     ARCH: 64
   - TARGET: nightly-i686-pc-windows-msvc
     ARCH: 32
-  - TARGET: nightly-x86_64-pc-windows-gnu
-    ARCH: 64
-  - TARGET: nightly-i686-pc-windows-gnu
-    ARCH: 32
 install:
   - cmd: echo Testing sciter%ARCH% %CONFIGURATION% with %TARGET% under %PLATFORM%.
-  - cmd: echo Current directory is
-  - cmd: echo %APPVEYOR_BUILD_FOLDER%
+  - cmd: echo Current directory is %APPVEYOR_BUILD_FOLDER%
   - cmd: mkdir ..\deps
   - cmd: curl -so "..\deps\sciter%ARCH%.dll" "https://raw.githubusercontent.com/c-smile/sciter-sdk/master/bin/sciter%ARCH%.dll"
   - cmd: curl -so "..\deps\sciter%ARCH%.lib" "https://raw.githubusercontent.com/c-smile/sciter-sdk/master/lib/sciter%ARCH%.lib"
