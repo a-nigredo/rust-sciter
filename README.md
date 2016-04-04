@@ -1,7 +1,7 @@
 # Rust bindings for Sciter
 
+![Build status](https://ci.appveyor.com/api/projects/status/github/pravic/rust-sciter?svg=true)
 [![Join the chat at https://gitter.im/pravic/rust-sciter](https://badges.gitter.im/pravic/rust-sciter.svg)](https://gitter.im/pravic/rust-sciter)
-![Build status](https://ci.appveyor.com/api/projects/status/github/pravic/rust-sciter?branch=appveyor&svg=true)
 
 _Check [this page](http://sciter.com/developers/sciter-sdk-bindings/) for another language bindings._
 
